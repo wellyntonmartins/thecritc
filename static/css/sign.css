@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+@import url("root.css");
+
+body {
+  font-family: -system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(to bottom right, #000000, #04615d);
+  color: #333;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 24px;
+  width: 80%;
+  min-height: 546px;
+  font-size: 30px;
+  background: white;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  width: 30%;
+  height: 100%;
+  padding: 25px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.left-side .page-left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 70%;
+  height: auto;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(8, 138, 133, 0.85)
+  );
+}
+
+.right-side .text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.right-side .text:hover {
+  transform: scale(1.05);
+}
+
+.text h1 {
+  margin: 0;
+  font-size: 60px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.text .the {
+  color: var(--gray-1);
+}
+
+.text .critic {
+  color: var(--primary-light);
+}
+
+.page-left-side h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--little-black);
+  letter-spacing: -0.5px;
+}
+
+.page-left-side .signup,
+.page-left-side a {
+  font-size: 14px;
+  margin-top: 20px;
+  color: var(--gray-6);
+}
+
+.page-left-side a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.page-left-side a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+.page-left-side footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 12px;
+  color: var(--gray-5);
+}
+
+footer p {
+  margin: 0;
+}
+
+.page-left-side .section-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.section-inputs .group-password {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row .input-group {
+  padding: 0px;
+  border-radius: 14px;
+  margin: 0;
+  box-shadow: none;
+  transition: var(--transition);
+  border: 1px solid var(--gray-3);
+  background: var(--translucid-background-white);
+  overflow: hidden;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 14px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  transition: var(--transition);
+  background: transparent;
+}
+
+.input-group input:focus {
+  box-shadow: 0px 0px 0px 1px var(--primary-light);
+}
+
+.input-group-text {
+  background-color: transparent;
+  border: none;
+  color: var(--gray-5);
+  transition: var(--transition);
+}
+
+.row label {
+  padding-left: 0px;
+  font-size: 15px;
+  margin-bottom: 8px;
+  display: block;
+  color: var(--gray-6);
+  font-weight: 500;
+}
+
+.input-group:focus-within {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 4px rgba(92, 221, 217, 0.2);
+}
+
+.input-group:focus-within .input-group-text {
+  color: var(--primary);
+}
+
+.row button {
+  border-radius: 14px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: var(--transition);
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.row button:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.row button:active {
+  transform: translateY(0);
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-5%, 5%);
+  }
+  50% {
+    transform: translate(-10%, 0);
+  }
+  75% {
+    transform: translate(-5%, -5%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

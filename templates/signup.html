@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-up theCritic</title>
+    <link rel="stylesheet" href="static/css/sign.css" />
+    <link rel="stylesheet" href="static/js/sign.js" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="login-container container-fluid">
+      <header>
+        <div class="logo">
+          <span class="the">the</span><span class="critic">Critic</span>
+        </div>
+      </header>
+
+      <!-- Login card-->
+      <div class="login-card">
+        <div class="left-side">
+          <div class="page-left-side">
+            <h2>Sing up <i class="bi bi-person-video2"></i></h2>
+
+            <!-- Form -->
+            <form action="#">
+              <div class="section-inputs">
+                <div class="row row_username">
+                  <label for="username">Username:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="bi bi-person"></i
+                    ></span>
+                    <input
+                      type="text"
+                      name="username"
+                      id="username"
+                      class="form-control"
+                      placeholder="CoolCritic123"
+                      minlength="6"
+                      maxlength="25"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="row row_email">
+                  <label for="email">Email:</label>
+
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="bi bi-envelope-at"></i
+                    ></span>
+                    <input
+                      class="form-control"
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="example@gmail.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="group-password">
+                  <div class="row row_password">
+                    <label for="password">Password:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="bi bi-person-lock"></i
+                      ></span>
+                      <input
+                        class="form-control"
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="your54%Pass0rd"
+                        minlength="8"
+                        maxlength="20"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row row_repeat_password">
+                    <label for="repeat_password">Repeat Password:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="bi bi-person-lock"></i
+                      ></span>
+                      <input
+                        class="form-control"
+                        type="password"
+                        id="repeat_password"
+                        name="repeat_password"
+                        placeholder="your54%Pass0rd"
+                        minlength="8"
+                        maxlength="20"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <button type="button" class="btn" onclick="submitSignup()">
+                  Sing-up
+                </button>
+              </div>
+            </form>
+
+            <div class="signup">
+              <p>Already have an account? <a href="/">Sign-in</a></p>
+            </div>
+
+            <footer>
+              <p>© 2025 theCritic - All rights reserved</p>
+            </footer>
+          </div>
+        </div>
+
+        <div class="right-side">
+          <div class="text">
+            <h1 class="the">the</h1>
+            <h1 class="critic">Critic</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

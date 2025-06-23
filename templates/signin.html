@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login-page</title>
-    <link rel="stylesheet" href="static/css/login.css" />
+    <title>Sign-in theCritic</title>
+    <link rel="stylesheet" href="static/css/sign.css" />
+    <link rel="stylesheet" href="static/js/sign.js" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
@@ -18,20 +19,19 @@
   </head>
   <body>
     <div class="login-container container-fluid">
-      <!-- Header com Logo -->
       <header>
         <div class="logo">
           <span class="the">the</span><span class="critic">Critic</span>
         </div>
       </header>
 
-      <!-- Card de Login -->
+      <!-- Login card-->
       <div class="login-card">
         <div class="left-side">
           <div class="page-left-side">
-            <h2>Login <i class="bi bi-door-open"></i></h2>
+            <h2>Sing in <i class="bi bi-door-open"></i></h2>
 
-            <!-- Formulário -->
+            <!-- Form -->
             <form action="#">
               <div class="section-inputs">
                 <div class="row row_email">
@@ -73,12 +73,17 @@
               </div>
 
               <div class="row">
-                <button class="btn" type="submit">Sing-in</button>
+                <button class="btn" onclick="submitSignin()" type="submit">
+                  Sing-in
+                </button>
               </div>
             </form>
 
             <div class="signup">
-              <p>New in theCritic? <a href="#">Create your account</a></p>
+              <p>
+                New in theCritic?
+                <a href="/signup">Create your account</a>
+              </p>
             </div>
 
             <footer>

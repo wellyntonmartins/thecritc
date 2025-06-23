@@ -1,0 +1,19 @@
+:root {
+  --system-blur: 20px;
+  --glass-opacity: 0.7;
+  --primary: #088a85;
+  --primary-light: #5cddd9;
+  --primary-dark: #04615d;
+  --gray-1: #f5f5f7;
+  --gray-2: #e5e5ea;
+  --gray-3: #d1d1d6;
+  --gray-4: #c7c7cc;
+  --gray-5: #aeaeb2;
+  --gray-6: #8e8e93;
+  --pastel-blue: #a2d2ff;
+  --pastel-green: #a7f3d0;
+  --pastel-pink: #ffafcc;
+  --little-black: #333;
+  --translucid-background-white: rgba(255, 255, 255, 0.8);
+  --transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
