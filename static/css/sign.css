@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 @import url("root.css");
 
 body {
@@ -58,7 +57,7 @@ body {
   background: var(--gradient-dark-theme);
 }
 
-.right-side .text {
+.right-side .logo-space {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -66,24 +65,13 @@ body {
   transition: var(--transition);
 }
 
-.right-side .text:hover {
+.right-side .logo-space:hover {
   transform: scale(1.05);
 }
 
-.text h1 {
-  margin: 0;
-  font-size: 60px;
-  margin-bottom: 20px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-}
-
-.text .the {
-  color: var(--gray-1);
-}
-
-.text .critic {
-  color: var(--primary-light);
+.logo-space img {
+  width: 350px;
+  height: 350px;
 }
 
 .page-left-side h2 {
