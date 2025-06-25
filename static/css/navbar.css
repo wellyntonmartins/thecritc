@@ -1,0 +1,108 @@
+@import url("root.css");
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  height: 64px;
+  background: var(--gradient-dark-theme-invert);
+}
+
+nav .container-fluid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  padding: 10px;
+  margin: 0px;
+}
+
+.container-fluid div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.container-fluid div.div-icon-logo {
+  justify-content: start;
+  gap: 70px;
+}
+
+.div-icon-logo .div-icon {
+  cursor: pointer;
+}
+
+.div-logo img {
+  width: 142px;
+  height: 100%;
+  margin: none;
+  padding: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+img:hover {
+  scale: 1.25;
+}
+
+.container-fluid .actions {
+  justify-content: space-around;
+  width: max-content;
+}
+
+a.a-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 70px;
+  text-decoration: none;
+  height: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--white);
+  font-weight: 500;
+  margin: 0px 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+a.a-nav:hover {
+  color: var(--black);
+  background-color: var(--primary-light);
+}
+
+.container-fluid .div-search-profile {
+  width: auto;
+  justify-content: end;
+  gap: 20px;
+}
+
+.div-search-profile .div-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  background-color: var(--white);
+  padding: 10px;
+  width: 500px;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--gray-5);
+  margin: 0px;
+}
+
+.div-input input {
+  width: 93%;
+  font-weight: 500;
+  outline: none;
+  border: none;
+}
+
+.div-search-profile .profile {
+  cursor: pointer;
+}

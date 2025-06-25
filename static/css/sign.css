@@ -55,11 +55,7 @@ body {
   justify-content: center;
   min-width: 70%;
   height: auto;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.9),
-    rgba(8, 138, 133, 0.85)
-  );
+  background: var(--gradient-dark-theme);
 }
 
 .right-side .text {
@@ -94,6 +90,7 @@ body {
   font-size: 30px;
   margin-bottom: 20px;
   font-weight: 600;
+  text-align: center;
   color: var(--little-black);
   letter-spacing: -0.5px;
 }

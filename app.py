@@ -28,42 +28,10 @@ def home():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
-    if request.method == 'POST':
-        data = request.json()
-
-        email = data.get('email')
-        password = data.get('password')
-
-        # Here, will be the database connection to verify the user data
-
-        return redirect('/home')
     return render_template('signin.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    if request.method == 'POST':
-        data = request.json()
-        username = data.get('username')
-        email = data.get('email')
-        password = data.get('password')
-
-        try:
-            cursor = g.cursor_dict
-
-            SQL = """
-                INSERT INTO users (username, email, password) VALUES ( %s, %s, %s)
-            """
-            
-            cursor.execute(SQL, (username, email, password))
-            result = cursor.fetchall()
-            print(f"\nPrint of the result: {result}")
-            g.db.commit()
-
-            message = "Your user has been created successfully!"
-            return message, 200
-        except Exception as e:
-            print(f"Something failed: {e}")
-            g.db.rollback()
     return render_template('signup.html')
 
 
