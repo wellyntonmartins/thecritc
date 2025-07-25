@@ -19,7 +19,37 @@
     />
   </head>
   <body>
+    <div
+      class="row"
+      style="
+        z-index: 10;
+        position: absolute;
+        display: flex;
+        justify-self: center;
+      "
+    >
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
     <div class="login-container container-fluid">
+      {% with messages = get_flashed_messages(with_categories=True) %} {% if
+      messages %}
+      <ul class="flashed-messages" style="display: flex; justify-self: center">
+        {% for category, message in messages %}
+        <li class="alert alert-{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      <script>
+        setTimeout(function () {
+          var messages = document.querySelector(".flashed-messages");
+          if (messages) {
+            messages.style.display = "none";
+          }
+        }, 5000);
+      </script>
+      {% endif %} {% endwith %}
       <header>
         <div class="logo">
           <span class="the">the</span><span class="critic">Critic</span>
@@ -33,7 +63,7 @@
             <h2>Sing up <i class="bi bi-person-video2"></i></h2>
 
             <!-- Form -->
-            <form action="#">
+            <form action="/register" method="post">
               <div class="section-inputs">
                 <div class="row row_username">
                   <label for="username">Username:</label>
@@ -95,7 +125,7 @@
               </div>
 
               <div class="row">
-                <button type="button" class="btn">Sing-up</button>
+                <button type="submit" class="btn">Sing-up</button>
               </div>
             </form>
 
