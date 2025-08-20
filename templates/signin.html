@@ -22,16 +22,17 @@
     {% with messages = get_flashed_messages(with_categories=True) %} {% if
     messages %}
     <ul
-      class="flashed-messages"
+      class="flashed-messages mt-3"
       style="
         display: flex;
         justify-self: center;
         z-index: 10;
+        width: 100%;
         position: absolute;
       "
     >
       {% for category, message in messages %}
-      <li class="alert alert-{{ category }}">{{ message }}</li>
+      <p class="alert alert-{{ category }}">{{ message }}</p>
       {% endfor %}
     </ul>
     <script>

@@ -5,6 +5,7 @@
   --black: black;
   --primary: #088a85;
   --primary-light: #5cddd9;
+  --primary-green: #198754;
   --primary-dark: #04615d;
   --gray-1: #f5f5f7;
   --gray-2: #e5e5ea;
@@ -28,4 +29,5 @@
     rgba(8, 138, 133, 0.85),
     rgba(0, 0, 0, 0.9)
   );
+  --background-dark-home: #0c1111;
 }

@@ -17,7 +17,15 @@ def index():
 def home():
     if 'user' not in session:
         return redirect('signin')
-    return render_template('home.html')
+    conn = mysql.connector.connect(**config)
+    
+    success, message, games = getters.get_database_game(conn)
+
+    if success == True:
+        return render_template('home.html', games=games)
+    else:
+        flash(f'\n {message}', 'danger')
+        return render_template('home.html')
 
 # Enter in signin page
 @app.route('/signin', methods=['GET'])
@@ -38,8 +46,6 @@ def auth():
         flash(message, 'success')
 
         session = session
-        print('\nSession: ', session)
-
         return redirect('home')
     else:
         flash(f'\n {message}', 'danger')
@@ -60,7 +66,7 @@ def register():
         flash(message, 'success')
         return redirect('signin')
     else:
-        flash('Algo deu errado. Por favor, tente novamente.', 'error')
+        flash('Something got erong. Please, contact the admin.', 'error')
         print(message)
         return redirect('signup')
 
@@ -68,6 +74,30 @@ def register():
 @app.route('/signup', methods=['GET'])
 def signup():
     return render_template('signup.html')
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    session.clear()
+    return redirect('signin')
+
+@app.route('/gamepage', methods=['POST'])
+def gamepage():
+    if 'user' not in session:
+        return redirect('signin')
+    
+    conn = mysql.connector.connect(**config)
+
+    id_game = request.form['game_id']
+
+    success, message, game = getters.game_by_id(conn, id_game)
+
+    if success == True:
+        flash(message, 'success')
+        return render_template('gamepage.html', game=game)
+    else:
+        flash('Something got wrong. Please, contact the admin', 'error')
+        print(message)
+        return redirect('home')
 
 
 if __name__ == '__main__':

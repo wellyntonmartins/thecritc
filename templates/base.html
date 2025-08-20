@@ -21,6 +21,7 @@
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/static/css/base.css" />
     <title>{% block title %}{% endblock %}</title>
     {% block head %}{% endblock %}
   </head>
@@ -84,14 +85,13 @@
               width="40"
               height="40"
               fill="white"
-              class="bi bi-person-bounding-box"
+              class="bi bi-person-circle"
               viewBox="0 0 16 16"
             >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
               <path
-                d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"
-              />
-              <path
-                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
               />
             </svg>
           </div>
@@ -103,9 +103,18 @@
   <body>
     {% with messages = get_flashed_messages(with_categories=True) %} {% if
     messages %}
-    <ul class="flashed-messages" style="display: flex; justify-self: center">
+    <ul
+      class="flashed-messages mt-3"
+      style="
+        display: flex;
+        justify-self: center;
+        z-index: 10;
+        width: 100%;
+        position: absolute;
+      "
+    >
       {% for category, message in messages %}
-      <li class="alert alert-{{ category }}">{{ message }}</li>
+      <p class="alert alert-{{ category }}">{{ message }}</p>
       {% endfor %}
     </ul>
     <script>

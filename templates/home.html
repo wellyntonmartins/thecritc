@@ -3,7 +3,47 @@ block head %} <link rel="stylesheet" href="/static/css/home.css" /> {% endblock
 %} {% block content %}
 <main>
   <div class="container-fluid">
-    <div class="new-games-section"></div>
+    <div class="new-games-section">
+      {% for game in games %}
+      <form action="/gamepage" method="POST">
+        <input
+          class="d-none"
+          type="text"
+          name="game_id"
+          id="game_id"
+          value="{{ game.id }}"
+        />
+
+        <div class="game-section">
+          <div class="game-cover">
+            <img
+              class="cover"
+              src="{{ game.src_cover }}"
+              alt="{{ game.name }}"
+            />
+          </div>
+
+          <div class="game-infos">
+            <p>{{ game.name }} <br /></p>
+            <p class="p-gray">{{ game.genre }}</p>
+
+            <div class="hidden-desc">
+              <p>{{ game.description[:150] }}...</p>
+              <button
+                type="submit"
+                class="btn btn-success btn-sm"
+                style="width: 100%"
+              >
+                See more
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      {% endfor %}
+    </div>
+
+    <div class="mt-4">///</div>
   </div>
 </main>
 {% endblock %}

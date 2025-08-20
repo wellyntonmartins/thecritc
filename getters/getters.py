@@ -37,3 +37,51 @@ def search_user(conn, user_email, user_password):
             cursor.close()
         if conn:
             conn.close()
+
+def get_database_game(conn):
+    cursor = None
+
+    try:
+        cursor = conn.cursor(dictionary=True)
+
+        SQL = "SELECT * FROM game"
+
+        cursor.execute(SQL)
+        game_record = cursor.fetchall()
+
+        if game_record:
+           return True, "Games successfuly loaded", game_record
+        else:
+           return False, "Can't found games. Please contact the support", None
+    except Exception as e:
+        print(f'Something got wrong: {e}')
+        return False, f'Something got wrong. Please contact the Admin', None
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+def game_by_id(conn, id):
+    try:
+        cursor = conn.cursor(dictionary=True)
+
+        SQL = "SELECT * FROM game WHERE id = %s"
+
+        values = (id,)
+
+        cursor.execute(SQL, values)
+        game_record = cursor.fetchall()
+
+        if game_record:
+           return True, "Games successfuly loaded", game_record
+        else:
+           return False, "Can't found game. Please contact the support", None
+    except Exception as e:
+        print(f'Something got wrong: {e}')
+        return False, f'Something got wrong. Please contact the Admin', None
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
