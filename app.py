@@ -75,11 +75,13 @@ def register():
 def signup():
     return render_template('signup.html')
 
+# Session logout
 @app.route('/logout', methods=['GET'])
 def logout():
     session.clear()
     return redirect('signin')
 
+# Individual game page
 @app.route('/gamepage', methods=['POST'])
 def gamepage():
     if 'user' not in session:
@@ -92,7 +94,6 @@ def gamepage():
     success, message, game = getters.game_by_id(conn, id_game)
 
     if success == True:
-        flash(message, 'success')
         return render_template('gamepage.html', game=game)
     else:
         flash('Something got wrong. Please, contact the admin', 'error')

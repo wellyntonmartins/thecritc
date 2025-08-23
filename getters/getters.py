@@ -71,10 +71,10 @@ def game_by_id(conn, id):
         values = (id,)
 
         cursor.execute(SQL, values)
-        game_record = cursor.fetchall()
+        game_record = cursor.fetchone()
 
         if game_record:
-           return True, "Games successfuly loaded", game_record
+           return True, "Game successfuly loaded", game_record
         else:
            return False, "Can't found game. Please contact the support", None
     except Exception as e:

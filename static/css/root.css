@@ -1,3 +1,4 @@
+/* Root to set the colors of teCritic */
 :root {
   --system-blur: 20px;
   --glass-opacity: 0.7;
@@ -13,6 +14,12 @@
   --gray-4: #c7c7cc;
   --gray-5: #aeaeb2;
   --gray-6: #8e8e93;
+  --red-rate: #ff6874;
+  --red-pastel-rate: #ffc3c7;
+  --yellow-rate: #ffbd3f;
+  --yellow-pastel-rate: #ffe5b2;
+  --green-rate: #00ce7a;
+  --green-pastel-rate: #99ebca;
   --pastel-blue: #a2d2ff;
   --pastel-green: #a7f3d0;
   --pastel-pink: #ffafcc;
