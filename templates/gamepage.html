@@ -1,5 +1,5 @@
-{% extends 'base.html' %}{% block title %}Game Page | TheCritic{% endblock %} {%
-block head %} <link rel="stylesheet" href="/static/css/gamepage.css" />
+{% extends 'base.html' %}{% block title %}Game Page | TheCritic {% endblock %}
+{% block head %} <link rel="stylesheet" href="/static/css/gamepage.css" />
 {% endblock %} {% block content %}
 <main>
   <div class="container-fluid">
@@ -14,12 +14,46 @@ block head %} <link rel="stylesheet" href="/static/css/gamepage.css" />
       </div>
 
       <div class="infos-board">
-        <h2 class="title-game">{{ game.name }}</h2>
+        <input
+          type="hidden"
+          name="id-game"
+          id="id-game"
+          value="{{ game.id }}"
+        />
 
-        <h3 class="genre-game">{{ game.genre }}</h3>
+        {% if rate %}
+        <input
+          type="hidden"
+          name="user-rate"
+          id="user-rate"
+          value="{{ rate.rating }}"
+        />
+        {% endif %}
+
+        <div class="title-genre">
+          <h2 class="title-game">{{ game.name }}</h2>
+          <h3 class="genre-game">{{ game.genre }}</h3>
+        </div>
+
+        <div class="average-rate">
+          <div class="p-rate">
+            <p>T H E C R I T I C - R A T E</p>
+            <p class="fw-500">Average of game ratings</p>
+          </div>
+
+          <div class="bignumber-rate" id="avg-bignumber-rate">
+            {{ average.avg }}
+          </div>
+        </div>
 
         <div class="text-bignumber-rate">
-          <p class="text-rate" id="text-rate">Hover to put your note</p>
+          <div class="p-rate">
+            <p>M Y - R A T E</p>
+            <p class="text-my-rate fw-500" id="text-rate">
+              Hover to put your note
+            </p>
+          </div>
+
           <div class="bignumber-rate" id="bignumber-rate"></div>
         </div>
 

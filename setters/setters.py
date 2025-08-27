@@ -31,3 +31,34 @@ def insert_user(conn, name, email, password):
             cursor.close()
         if conn:
             conn.close()
+
+def insert_note(conn, id_game, id_user, rating):
+    cursor = None
+
+    try:
+        cursor = conn.cursor(dictionary=True)
+        
+        cursor.execute("SELECT * FROM ratings WHERE id_game = %s AND id_user = %s", (id_game, id_user,))
+        rate_exists = cursor.fetchone();
+
+        if rate_exists: 
+            SQL_UPDATE = "UPDATE ratings SET rating = %s WHERE id_game = %s AND id_user = %s"
+            values_update = (rating, id_game, id_user,)
+            cursor.execute(SQL_UPDATE, values_update)
+        else:
+            SQL = "INSERT INTO ratings (id_game, id_user, rating) VALUES (%s, %s, %s)"
+            values = (id_game, id_user, rating,)
+            cursor.execute(SQL, values)
+        
+        conn.commit()
+        
+        return True, f'Rate {rating} successfuly registered'
+    except Exception as e:
+        if conn:
+            conn.rollback()
+        return False, f'\nSomething got wrong: {e}'
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()

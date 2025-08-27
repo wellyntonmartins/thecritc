@@ -63,6 +63,8 @@ def get_database_game(conn):
             conn.close()
 
 def game_by_id(conn, id):
+    cursor = None
+
     try:
         cursor = conn.cursor(dictionary=True)
 
@@ -77,6 +79,48 @@ def game_by_id(conn, id):
            return True, "Game successfuly loaded", game_record
         else:
            return False, "Can't found game. Please contact the support", None
+    except Exception as e:
+        print(f'Something got wrong: {e}')
+        return False, f'Something got wrong. Please contact the Admin', None
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+def search_rating_by_id(conn, id_game, id_user):
+    cursor = None
+
+    try:
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT * FROM ratings WHERE id_game = %s AND id_user = %s", (id_game, id_user,))
+        rate_exists = cursor.fetchone();
+
+        if rate_exists:
+           return True, "Rate successfuly loaded", rate_exists
+        else:
+           return False, "Can't found. Rate don't exists in database", None
+    except Exception as e:
+        print(f'Something got wrong: {e}')
+        return False, f'Something got wrong. Please contact the Admin', None
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+def average_rating_by_id(conn, id_game):
+    cursor = None
+
+    try:
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT AVG(rating) as avg FROM ratings WHERE id_game = %s", (id_game, ))
+        average_rate = cursor.fetchone();
+
+        
+        return True, "Rate average successfuly loaded", average_rate
     except Exception as e:
         print(f'Something got wrong: {e}')
         return False, f'Something got wrong. Please contact the Admin', None
