@@ -9,6 +9,7 @@ main .container-fluid {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0px;
 }
 
 .container-fluid .game-board {
@@ -157,9 +158,8 @@ main .container-fluid {
   height: 60px;
   border-radius: 12px;
   color: black;
-  font-size: 22px;
+  font-size: 33px;
   font-weight: 500;
-  letter-spacing: 0.1rem;
   margin-bottom: 10px;
   transition: all 0.6s ease;
 }
@@ -208,8 +208,135 @@ main .container-fluid {
   background: var(--green-pastel-rate);
 }
 
-.game-board .top-comments {
+.container-fluid .container-2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--white);
+}
+
+.container-2 .top-comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+}
+
+.top-comments .title-comments {
+  display: flex;
+  color: var(--black);
+  padding: 0px;
+}
+
+.top-comments .see-comment-section {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.see-comment-section .comment-shadow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--gray-special);
+  gap: 5px;
+  padding: 10px;
+  width: 380px;
+  height: 270px;
+}
+
+.comment-shadow .subtitle {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: start;
   width: 100%;
+  height: auto;
+  color: var(--gray-6);
+  border-bottom: 1px solid var(--gray-6);
+}
+
+.comment-shadow .rate-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  height: auto;
+}
+
+.rate-name .rate-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: 0.1rem;
+  border-radius: 8px;
+  color: var(--black);
+}
+
+.rate-name .user-name {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.comment-shadow .gamer-comment {
+  height: 80px;
+  margin: 10px;
+  font-size: 12px;
+}
+
+.top-comments .user-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  height: auto;
+  gap: 5px;
+  color: var(--black);
+}
+
+.user-comment form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  gap: 5px;
+  padding: 0px;
+}
+
+form textarea {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  padding: 10px;
+  border: 2px solid var(--green-pastel-rate);
+}
+
+textarea:hover {
+  outline: none;
+}
+
+form .btn {
+  width: 100%;
+  background-color: var(--green-pastel-rate);
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.btn:hover,
+.button-more:hover {
+  background-color: var(--primary-green);
 }

@@ -62,3 +62,35 @@ def insert_note(conn, id_game, id_user, rating):
             cursor.close()
         if conn:
             conn.close()
+
+
+def insert_comment(conn, id_game, id_user, comment):
+    cursor = None
+
+    try:
+        cursor = conn.cursor(dictionary=True)
+        
+        cursor.execute("SELECT * FROM comments WHERE id_game = %s AND id_user = %s", (id_game, id_user,))
+        comment_exists = cursor.fetchone();
+
+        if comment_exists: 
+            SQL_UPDATE = "UPDATE comments SET comment = %s WHERE id_game = %s AND id_user = %s"
+            values_update = (comment, id_game, id_user,)
+            cursor.execute(SQL_UPDATE, values_update)
+        else:
+            SQL = "INSERT INTO comments (id_game, id_user, comment) VALUES (%s, %s, %s)"
+            values = (id_game, id_user, comment,)
+            cursor.execute(SQL, values)
+        
+        conn.commit()
+        
+        return True, 'Comment successfuly registered'
+    except Exception as e:
+        if conn:
+            conn.rollback()
+        return False, f'\nSomething got wrong: {e}'
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()

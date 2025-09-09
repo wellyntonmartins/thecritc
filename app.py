@@ -82,7 +82,7 @@ def logout():
     return redirect('signin')
 
 # Individual game page
-@app.route('/gamepage', methods=['POST'])
+@app.route('/gamepage', methods=['GET', 'POST'])
 def gamepage():
     if 'user' not in session:
         return redirect('signin')
@@ -90,6 +90,7 @@ def gamepage():
     conn = mysql.connector.connect(**config)
     conn2 = mysql.connector.connect(**config)
     conn3 = mysql.connector.connect(**config)
+    conn4 = mysql.connector.connect(**config)
 
     id_game = request.form['game_id']
     id_user = session['id']
@@ -97,13 +98,16 @@ def gamepage():
     success, message, game = getters.game_by_id(conn, id_game)
     success_rate, message_rate, rate = getters.search_rating_by_id(conn2, id_game, id_user)
     success_average, message_average, average_rate = getters.average_rating_by_id(conn3, id_game)
-
+    success_comment, message_comment, comments = getters.get_comment(conn4,  id_game)
 
     if success == True and success_average == True:
         if success_rate == True:
+            if success_comment == True:
+                return render_template('gamepage.html', game=game, rate=rate, average=average_rate, comments=comments)
             return render_template('gamepage.html', game=game, rate=rate, average=average_rate)
         else:
             print(f"\nMessage rate: {message_rate}\n")
+            print(f"\nMessage rate: {message_comment}\n")
             return render_template('gamepage.html', game=game, average=average_rate)
     else:
         flash('Something got wrong. Please, contact the admin', 'error')
@@ -134,6 +138,23 @@ def register_rate():
         print(message)
         return None
     
+@app.route('/register_comment', methods=['POST'])
+def register_comment():
+    conn = mysql.connector.connect(**config)
+
+    comment = request.form['user-comment']
+    id_user = session['id']
+    id_game = request.form['id-game-comment']
+
+    success, message = setters.insert_comment(conn, id_game, id_user, comment)
+
+    if success == True:
+        flash(message, 'success')
+        return redirect('home')
+    else:
+        print(f"\n{message}\n")
+        flash("Something got wrong. Please, contact the admin", 'danger')
+        return redirect('home')
 
 if __name__ == '__main__':
     app.run(debug=True)

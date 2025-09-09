@@ -42,7 +42,7 @@
           </div>
 
           <div class="bignumber-rate" id="avg-bignumber-rate">
-            {{ average.avg }}
+            {{ average.avg | replace(".", "") }}
           </div>
         </div>
 
@@ -77,11 +77,66 @@
       </div>
     </div>
 
-    <div class="top-comments mt-3"></div>
-    <div class="mt-5">//</div>
+    <div class="container-2">
+      <div class="top-comments mt-3">
+        <div class="title-comments">
+          <h4>theCritic's top comments</h4>
+        </div>
+
+        <div class="see-comment-section">
+          {% for comment in comments %}
+          <div class="comment-shadow shadow-lg p-3 mb-5 rounded">
+            <div class="subtitle"><p>G A M E R - R E V I E W</p></div>
+            <div class="rate-name">
+              <div class="rate-square">{{ comment.rate_user | int }}</div>
+
+              <h6 class="user-name">{{ comment.user_name }}</h6>
+            </div>
+
+            <div class="gamer-comment">
+              {{ comment.comment_user | truncate(175) }}
+            </div>
+
+            <button
+              class="button-more btn btn-success"
+              data-bs-toggle="popover"
+              data-bs-title="{{ comment.user_name }} - Full comment"
+              data-bs-content="{{ comment.comment_user }}"
+            >
+              see complete comment
+            </button>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="user-comment">
+          <h6>
+            Let your comment about {{ game.name }} and express your opinion to
+            the world!
+          </h6>
+
+          <form action="/register_comment" method="POST">
+            <input
+              type="hidden"
+              name="id-game-comment"
+              id="id-game-comment"
+              value="{{ game.id }}"
+            />
+            <textarea
+              class="form-control"
+              name="user-comment"
+              id="user-comment"
+            ></textarea>
+            <button type="submit" class="btn">
+              send or update your comment
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">//</div>
   </div>
 </main>
-
 <script src="/static/js/gamepage.js"></script>
 
 {% endblock %}

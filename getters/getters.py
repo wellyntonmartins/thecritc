@@ -119,10 +119,44 @@ def average_rating_by_id(conn, id_game):
         cursor.execute("SELECT AVG(rating) as avg FROM ratings WHERE id_game = %s", (id_game, ))
         average_rate = cursor.fetchone();
 
-        
         return True, "Rate average successfuly loaded", average_rate
     except Exception as e:
         print(f'Something got wrong: {e}')
+        return False, f'Something got wrong. Please contact the Admin', None
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+def get_comment(conn, id_game):
+    cursor = None
+
+    try:
+        cursor = conn.cursor(dictionary=True, buffered=True)
+
+
+        comments_infos = []
+        cursor.execute("SELECT * FROM comments WHERE id_game = %s", (id_game, ))
+        game_comments = cursor.fetchall();
+
+        for comment in game_comments:
+            cursor.execute("SELECT name FROM user WHERE id = %s", (comment['id_user'], ))
+            name_user = cursor.fetchone()
+
+            cursor.execute("SELECT rating FROM ratings WHERE id_user = %s AND id_game = %s", (comment['id_user'], comment['id_game'], ))
+            rate_user = cursor.fetchone()
+
+            comments_infos.append({
+                "user_name": name_user['name'],
+                "rate_user": rate_user['rating'],
+                "comment_user": comment['comment']
+            })
+
+
+        return True, "Comments successfuly loaded", comments_infos
+    except Exception as e:
+        print(f'get_comment says: Something got wrong: {e}')
         return False, f'Something got wrong. Please contact the Admin', None
     finally:
         if cursor:

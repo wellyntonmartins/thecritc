@@ -3,7 +3,7 @@ const textRate = document.getElementById("text-rate");
 const bigNumberRate = document.getElementById("bignumber-rate");
 const userRate = document.getElementById("user-rate");
 const avgBigNumberRate = document.getElementById("avg-bignumber-rate");
-
+const rateCommentSquare = document.getElementsByClassName("rate-square");
 let hasRated = false;
 let loadedRate = false;
 let currentRating = -1;
@@ -114,13 +114,23 @@ function resetRatingVisuals() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-  if (avgBigNumberRate.innerHTML <= 3.0) {
+  if (avgBigNumberRate.innerHTML <= 30) {
     avgBigNumberRate.style.background = "#ff6874";
-  } else if (avgBigNumberRate.innerHTML <= 6.0) {
+  } else if (avgBigNumberRate.innerHTML <= 60) {
     avgBigNumberRate.style.background = "#ffbd3f";
   } else {
     avgBigNumberRate.style.background = "#00ce7a";
   }
+
+  Array.from(rateCommentSquare).forEach((square) => {
+    if (square.innerHTML <= 3) {
+      square.style.background = "#ff6874";
+    } else if (square.innerHTML <= 6) {
+      square.style.background = "#ffbd3f";
+    } else {
+      square.style.background = "#00ce7a";
+    }
+  });
 
   if (userRate && userRate.value != "") {
     loadedRate = true;
